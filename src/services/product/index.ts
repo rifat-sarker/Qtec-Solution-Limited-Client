@@ -4,10 +4,12 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // Get all products
 export const getAllProducts = async () => {
-  return axios.get(`${BASE_URL}/products`);
+  const response = await axios.get(`${BASE_URL}/products`);
+  return response.data.data; 
 };
 
 // Get single product
 export const getProductById = async (productId: string) => {
-  return axios.get(`${BASE_URL}/products/${productId}`);
+  const response = await axios.get(`${BASE_URL}/products/${productId}`);
+  return response.data.data; 
 };

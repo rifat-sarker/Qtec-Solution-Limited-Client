@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Navbar } from "../shared/Navbar";
 import { CartSidebar } from "../components/CartSidebar";
 import { useState } from "react";
+import { Toaster } from "sonner";
 
 const Root = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -16,7 +17,10 @@ const Root = () => {
           // Optional: trigger modal later
         }}
       />
-      <Outlet />
+      <div className="max-w-6xl mx-auto p-4">
+        <Toaster />
+        <Outlet />
+      </div>
     </div>
   );
 };

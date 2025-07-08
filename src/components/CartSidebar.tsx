@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCart, updateQuantity } from "../services/cart";
 
-
 interface CartSidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -67,7 +66,7 @@ export function CartSidebar({ isOpen, onClose, onCheckout }: CartSidebarProps) {
 
   return (
     <div
-      className={`fixed top-0 right-0 h-96 w-80 bg-white shadow-lg z-50 transition-transform duration-300 ease-in-out ${
+      className={`fixed top-0 right-0  w-80 bg-white shadow-lg z-50 transition-transform duration-300 ease-in-out ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -120,7 +119,7 @@ export function CartSidebar({ isOpen, onClose, onCheckout }: CartSidebarProps) {
         </div>
         <button
           onClick={onCheckout}
-          className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          className="w-full bg-black hover:bg-gray-900 text-white font-semibold py-2 rounded-xl my-4 shadow-md hover:shadow-lg transition duration-200 disabled:opacity-50"
         >
           Checkout
         </button>

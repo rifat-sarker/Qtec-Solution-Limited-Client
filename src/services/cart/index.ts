@@ -9,7 +9,7 @@ export const getCart = async () => {
 
 //  Add to Cart
 export const addToCart = async (productId: string) => {
-  return axios.post(`${BASE_URL}/cart`, { productId });
+  return axios.post(`${BASE_URL}/cart/add`, { productId });
 };
 
 // Update Quantity
