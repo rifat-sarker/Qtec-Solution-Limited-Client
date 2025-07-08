@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCart, updateQuantity } from "../services/cart";
+import { CheckoutModal } from "./CheckoutModal";
 
 interface CartSidebarProps {
   isOpen: boolean;
@@ -7,9 +8,10 @@ interface CartSidebarProps {
   onCheckout: () => void;
 }
 
-export function CartSidebar({ isOpen, onClose, onCheckout }: CartSidebarProps) {
+export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
   const [cartItems, setCartItems] = useState<any[]>([]);
   const [total, setTotal] = useState(0);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
   const calculateTotal = (items: any[]) => {
     const amount = items.reduce(
@@ -60,70 +62,99 @@ export function CartSidebar({ isOpen, onClose, onCheckout }: CartSidebarProps) {
     if (currentQty > 1) {
       handleQuantityChange(cartItemId, currentQty - 1);
     } else {
-      handleQuantityChange(cartItemId, 0); // remove if qty drops to 0
+      handleQuantityChange(cartItemId, 0);
     }
   };
 
-  return (
-    <div
-      className={`fixed top-0 right-0  w-80 bg-white shadow-lg z-50 transition-transform duration-300 ease-in-out ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
-    >
-      <div className="flex justify-between items-center p-4 border-b">
-        <h2 className="text-lg font-semibold">Your Cart</h2>
-        <button onClick={onClose} className="text-gray-600 hover:text-red-600">
-          ✕
-        </button>
-      </div>
+  const handleProceedToCheckout = () => {
+    onClose(); // close sidebar
+    setIsCheckoutModalOpen(true); // ✅ open modal
+  };
 
-      <div className="p-4 space-y-4 overflow-y-auto h-[calc(100%-140px)]">
-        {cartItems.length === 0 ? (
-          <p className="text-gray-500">Your cart is empty</p>
-        ) : (
-          cartItems.map((item) => (
-            <div key={item._id} className="flex items-center gap-3">
-              <img
-                src={item.product.image}
-                alt={item.product.title}
-                className="w-16 h-16 object-cover rounded"
-              />
-              <div className="flex-1">
-                <h3 className="text-sm font-semibold">{item.product.title}</h3>
-                <p className="text-sm text-gray-500">${item.product.price}</p>
-                <div className="flex items-center mt-1 gap-2">
-                  <button
-                    onClick={() => decrease(item._id, item.quantity)}
-                    className="px-2 py-1 border rounded"
-                  >
-                    -
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    onClick={() => increase(item._id, item.quantity)}
-                    className="px-2 py-1 border rounded"
-                  >
-                    +
-                  </button>
+  const handleOrderSubmit = (details: {
+    name: string;
+    email: string;
+    address: string;
+  }) => {
+    console.log("Order placed with details:", details);
+    // You can optionally clear the cart or show a toast
+  };
+
+  return (
+    <>
+      {/* ✅ Checkout Modal */}
+      <CheckoutModal
+        isOpen={isCheckoutModalOpen}
+        onClose={() => setIsCheckoutModalOpen(false)}
+        onSubmit={handleOrderSubmit}
+      />
+
+      <div
+        className={`fixed top-0 right-0 w-80 bg-white shadow-lg z-50 transition-transform duration-300 ease-in-out ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center p-4 border-b">
+          <h2 className="text-lg font-semibold">Your Cart</h2>
+          <button
+            onClick={onClose}
+            className="text-gray-600 hover:text-red-600"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div className="p-4 space-y-4 overflow-y-auto h-[calc(100%-140px)]">
+          {cartItems.length === 0 ? (
+            <p className="text-gray-500">Your cart is empty</p>
+          ) : (
+            cartItems.map((item) => (
+              <div key={item._id} className="flex items-center gap-3">
+                <img
+                  src={item.product.image}
+                  alt={item.product.title}
+                  className="w-16 h-16 object-cover rounded"
+                />
+                <div className="flex-1">
+                  <h3 className="text-sm font-semibold">
+                    {item.product.title}
+                  </h3>
+                  <p className="text-sm text-gray-500">${item.product.price}</p>
+                  <div className="flex items-center mt-1 gap-2">
+                    <button
+                      onClick={() => decrease(item._id, item.quantity)}
+                      className="px-2 py-1 border rounded"
+                    >
+                      -
+                    </button>
+                    <span>{item.quantity}</span>
+                    <button
+                      onClick={() => increase(item._id, item.quantity)}
+                      className="px-2 py-1 border rounded"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
-      </div>
-
-      <div className="border-t p-4">
-        <div className="flex justify-between font-semibold">
-          <span>Total:</span>
-          <span>${total.toFixed(2)}</span>
+            ))
+          )}
         </div>
-        <button
-          onClick={onCheckout}
-          className="w-full bg-black hover:bg-gray-900 text-white font-semibold py-2 rounded-xl my-4 shadow-md hover:shadow-lg transition duration-200 disabled:opacity-50"
-        >
-          Checkout
-        </button>
+
+        <div className="p-4 border-t">
+          <div className="flex justify-between font-semibold text-lg mb-4">
+            <span>Total:</span>
+            <span>${total}</span>
+          </div>
+          <button
+            onClick={handleProceedToCheckout}
+            className="w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition"
+            disabled={cartItems.length === 0}
+          >
+            Proceed to Checkout
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
