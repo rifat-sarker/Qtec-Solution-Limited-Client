@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCart, updateQuantity } from "../services/cart";
 import { CheckoutModal } from "./CheckoutModal";
+import {  X } from "lucide-react";
 
 interface CartSidebarProps {
   isOpen: boolean;
@@ -90,9 +91,9 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
       />
 
       <div
-        className={`fixed top-0 right-0 w-80 bg-white shadow-lg z-50 transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 w-80 h-screen bg-white shadow-lg z-50 transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        } flex flex-col`}
       >
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-lg font-semibold">Your Cart</h2>
@@ -100,7 +101,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
             onClick={onClose}
             className="text-gray-600 hover:text-red-600"
           >
-            ✕
+            <X/>
           </button>
         </div>
 
