@@ -13,6 +13,6 @@ export const addToCart = async (productId: string) => {
 };
 
 // Update Quantity
-export const updateQuantity = async (productId: string, quantity: number) => {
-  return axios.patch(`${BASE_URL}/cart/${productId}`, { quantity });
+export const updateQuantity = async (cartItemId: string, quantity: number) => {
+  return axios.patch(`${BASE_URL}/cart/item/${cartItemId}`, { quantity });
 };
