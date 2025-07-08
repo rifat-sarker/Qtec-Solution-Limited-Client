@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCart } from "../services/cart";
+import { ShoppingBag } from "lucide-react";
+
+
 
 
 export function Navbar({ onCartClick }: { onCartClick: () => void }) {
@@ -29,7 +32,7 @@ export function Navbar({ onCartClick }: { onCartClick: () => void }) {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-xl font-bold text-gray-900">
-            Store
+            Qtec Solution Limited
           </Link>
 
           <div className="flex items-center gap-6">
@@ -40,7 +43,7 @@ export function Navbar({ onCartClick }: { onCartClick: () => void }) {
               onClick={onCartClick}
               className="text-gray-700 hover:text-gray-900 relative"
             >
-              Cart
+              <ShoppingBag />
               {itemCount > 0 && (
                 <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {itemCount}
