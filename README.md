@@ -64,6 +64,7 @@ bun run dev
 
 ```
 ### Project Structure
+
 src/
 ├── components/
 │ ├── CartSidebar.tsx
@@ -82,6 +83,8 @@ src/
 │ └── Footer.tsx
 │
 └── main.tsx
+
+```
 
 ### 🔗 API Integration
 All API requests are made to:
