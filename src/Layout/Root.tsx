@@ -4,6 +4,7 @@ import { CartSidebar } from "../components/CartSidebar";
 import { useState } from "react";
 import { Toaster } from "sonner";
 import { CheckoutModal } from "../components/CheckoutModal";
+import Footer from "../shared/Footer";
 
 const Root = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -38,10 +39,11 @@ const Root = () => {
         onSubmit={handleSubmitOrder}
       />
 
-      <div className="max-w-6xl mx-auto p-4">
+      <div className="max-w-6xl mx-auto p-4 min-h-screen">
         <Toaster />
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 };

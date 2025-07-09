@@ -1,69 +1,88 @@
-# React + TypeScript + Vite
+# 🛍️ Qtec Solution Limited - Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the Frontend for **Qtec Solution Limited**, a responsive shopping cart web application. Built with React, React Router v7, and Tailwind CSS, it allows users to browse products, view product details with image magnification, and manage their cart.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+🔗 [https://qtec-solution-limited-client.vercel.app](https://qtec-solution-limited-client.vercel.app)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- 🛍 Product listing and detail pages
+- 🔍 Image magnification on hover
+- 🛒 Add to cart, update quantity, and manage cart
+- 📦 Cart state persists during session
+- 🌈 Fully responsive design with Tailwind CSS
+- 🧭 Seamless navigation using React Router v7
+- 🔔 Beautiful notifications with `sonner`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🧪 How to Run Locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/rifat-sarker/Qtec-Solution-Limited-Client.git
+cd Qtec-Solution-Limited-Client
+
+```
+### 2. Install Dependencies
+
+```bash
+bun install
+```
+### 3. Environment Setup
+
+```bash
+VITE_API_BASE_URL=https://qtec-solution-limited-server.vercel.app/api
+Update this value if your backend is hosted locally.
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 4. Run the Development Server
+```bash
+bun run dev
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+### 🛠 Tech Stack
+| Technology              | Purpose                      |
+| ----------------------- | ---------------------------- |
+| **React 19**            | Frontend UI library          |
+| **React Router v7**     | Client-side routing          |
+| **Tailwind CSS**        | Utility-first CSS styling    |
+| **Axios**               | HTTP client for API requests |
+| **React Image Magnify** | Zoom-in product image viewer |
+| **Lucide React**        | Beautiful icons              |
+| **Sonner**              | Toast notifications          |
+| **Vite**                | Next-gen frontend tooling    |
+| **TypeScript**          | Type-safe development        |
+
+
+### Project Structure
+src/
+├── components/
+│   ├── CartSidebar.tsx
+│   ├── CheckoutModal.tsx
+│   └── ...
+├── pages/
+│   ├── Home.tsx
+│   └── ...
+├── routes/
+├── services/
+├── shared/
+└── main.tsx
+
+### 🔗 API Integration
+All API requests are made to:
+https://qtec-solution-limited-server.vercel.app/api
+
+
+👨‍💻 Author
+Rifat Sarker
+🌐 LinkedIn
+📧 rifatswd@gmail.com
+

@@ -9,7 +9,6 @@ import ReactImageMagnify from "react-image-magnify";
 export function ProductDetailPage() {
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [notFound, setNotFound] = useState(false);
   const [activeTab, setActiveTab] = useState<"details" | "specs" | "reviews">(
     "details"
   );
@@ -20,13 +19,13 @@ export function ProductDetailPage() {
         try {
           const data = await getProductById(productId);
           if (!data) {
-            setNotFound(true);
+            console.log(data);
           } else {
             setProduct(data);
           }
         } catch (error) {
           console.error("Product not found or API error:", error);
-          setNotFound(true);
+          
         }
       }
     })();
@@ -42,13 +41,7 @@ export function ProductDetailPage() {
     }
   };
 
-  if (notFound) {
-    return (
-      <div className="p-6 text-center text-red-600 text-xl">
-        Product not found.
-      </div>
-    );
-  }
+
 
   if (!product) return <div className="p-6">Loading...</div>;
 
@@ -159,8 +152,8 @@ export function ProductDetailPage() {
             <ul className="list-disc list-inside space-y-1">
               <li>Material: High-quality steel</li>
               <li>Weight: 15.2kg</li>
-              <li>Color: {product.color || "N/A"}</li>
-              <li>Brand: {product.brand || "Unknown"}</li>
+              <li>Color: Red</li>
+              <li>Brand: Bike</li>
             </ul>
           </div>
 

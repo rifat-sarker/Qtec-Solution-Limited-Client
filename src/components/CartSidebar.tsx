@@ -14,6 +14,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
   const [total, setTotal] = useState(0);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
+  console.log(cartItems);
   const calculateTotal = (items: any[]) => {
     const amount = items.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
@@ -69,7 +70,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
 
   const handleProceedToCheckout = () => {
     onClose(); // close sidebar
-    setIsCheckoutModalOpen(true); // ✅ open modal
+    setIsCheckoutModalOpen(true); //
   };
 
   const handleOrderSubmit = (details: {
@@ -78,12 +79,12 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
     address: string;
   }) => {
     console.log("Order placed with details:", details);
-    // You can optionally clear the cart or show a toast
+   
   };
 
   return (
     <>
-      {/* ✅ Checkout Modal */}
+      {/*  Checkout Modal */}
       <CheckoutModal
         isOpen={isCheckoutModalOpen}
         onClose={() => setIsCheckoutModalOpen(false)}
@@ -101,7 +102,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
             onClick={onClose}
             className="text-gray-600 hover:text-red-600"
           >
-            <X/>
+            <X />
           </button>
         </div>
 
@@ -109,11 +110,11 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
           {cartItems.length === 0 ? (
             <p className="text-gray-500">Your cart is empty</p>
           ) : (
-            cartItems.map((item) => (
+            cartItems?.map((item) => (
               <div key={item._id} className="flex items-center gap-3">
                 <img
-                  src={item.product.image}
-                  alt={item.product.title}
+                  src={item.product?.image || "/placeholder.jpg"}
+                  alt={item.product?.title}
                   className="w-16 h-16 object-cover rounded"
                 />
                 <div className="flex-1">

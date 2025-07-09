@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  // console.log(products);
 
   useEffect(() => {
     (async () => {
