@@ -65,15 +65,21 @@ bun run dev
 ### Project Structure
 src/
 ├── components/
-│   ├── CartSidebar.tsx
-│   ├── CheckoutModal.tsx
-│   └── ...
+│ ├── CartSidebar.tsx
+│ ├── CheckoutModal.tsx
+│ ├── ProductDetails.tsx
+│ └── ProductList.tsx
+│
 ├── pages/
-│   ├── Home.tsx
-│   └── ...
+│ ├── Home.tsx
+│ └── ...
+│
 ├── routes/
 ├── services/
 ├── shared/
+│ ├── Navbar.tsx
+│ └── Footer.tsx
+│
 └── main.tsx
 
 ### 🔗 API Integration
