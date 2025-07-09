@@ -63,28 +63,29 @@ bun run dev
 | **TypeScript**          | Type-safe development        |
 
 ```
-### Project Structure
+### 📁 Project Structure
 
+```
 src/
 ├── components/
-│ ├── CartSidebar.tsx
-│ ├── CheckoutModal.tsx
-│ ├── ProductDetails.tsx
-│ └── ProductList.tsx
+│   ├── CartSidebar.tsx
+│   ├── CheckoutModal.tsx
+│   ├── ProductDetails.tsx
+│   └── ProductList.tsx
 │
 ├── pages/
-│ ├── Home.tsx
-│ └── ...
+│   ├── Home.tsx
+│   └── ...
 │
 ├── routes/
 ├── services/
 ├── shared/
-│ ├── Navbar.tsx
-│ └── Footer.tsx
+│   ├── Navbar.tsx
+│   └── Footer.tsx
 │
 └── main.tsx
-
 ```
+
 
 ### 🔗 API Integration
 All API requests are made to:
