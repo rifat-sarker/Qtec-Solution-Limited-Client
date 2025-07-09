@@ -49,6 +49,7 @@ bun run dev
 
 ```
 ### 🛠 Tech Stack
+```
 | Technology              | Purpose                      |
 | ----------------------- | ---------------------------- |
 | **React 19**            | Frontend UI library          |
@@ -61,7 +62,7 @@ bun run dev
 | **Vite**                | Next-gen frontend tooling    |
 | **TypeScript**          | Type-safe development        |
 
-
+```
 ### Project Structure
 src/
 ├── components/
